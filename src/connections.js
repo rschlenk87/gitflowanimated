@@ -12,7 +12,7 @@ const ConnectionsElm = styled.svg`
 
 const draw = keyframes`
     to {
-        stroke-dashoffset: 0;   
+        stroke-dashoffset: 0;
     }
 `;
 

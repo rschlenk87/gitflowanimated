@@ -5,6 +5,7 @@ import {Button, ButtonIcon, fallDownAnimation, fadeIn} from "./global-styles";
 import GoeyFilter from "./goey-filter";
 import Connections from "./connections";
 
+
 const GitFlowElm = styled.div`
     margin: 0 auto;
 `;
@@ -21,7 +22,7 @@ const ProjectElm = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 90px 1fr;
     margin-top: 20px;
-    background: linear-gradient(135deg, rgba(34,52,122,1) 0%,rgba(23,35,82,1) 100%);
+    background: linear-gradient(135deg, rgba(103,182,235,1) 0%,rgba(47,155,227,1) 100%);
     border-radius: 5px;
     box-shadow: 0 4px 10px #9d9d9d;
     overflow: auto;
@@ -35,11 +36,11 @@ const GridColumn = styled.div`
 
 
 const BranchHeader = styled.div`
-    max-width: 90px;
-    padding: 5px;
+    max-width: 120px;
+    padding: 10px;
     text-align: center;
-    background-color: #131d45;
-    border-right: 1px solid #1b295f;
+    background-color: transparent;
+    border-right: 1px solid #fff;
     color: #f0f0f0;
     z-index: 1;
     margin-bottom: 10px;
@@ -51,16 +52,16 @@ const BranchActions = styled.div`
     grid-template-columns: ${p => `repeat(${p.count || 1}, 1fr)`};
     margin-top: 10px;
     justify-items: center;
-    height: 24px;
+    height: 45px;
 `;
 
 const BranchName = styled.h4`
     position: relative;
-    font-size: .7rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing:1.5pt;
+    letter-spacing: 0pt;
     margin-top: 10px;
-    opacity: .6;
+    opacity: 1.2;
 `;
 
 const Commits = styled.ol`
@@ -69,7 +70,7 @@ const Commits = styled.ol`
     height: ${p => p.height || '500px'};
     filter: url('#goo');
     z-index: 40;
-    border-right: 1px solid #1b295f;
+    border-right: 1px solid #fff;
     transition: opacity .5s;
 `;
 
@@ -322,7 +323,7 @@ class GitFlow extends Component {
     renderBranchCommit = (branch, branchIndex) => {
         const {commits} = this.props.project;
         const branchCommits = commits.filter(c => c.branch === branch.id);
-        let isMasterBranch = branch.name === 'master';
+        let isMasterBranch = branch.name === 'prod';
         return (
             <Commits
                 className={branch.merged ? 'merged' : ''}
@@ -351,9 +352,9 @@ class GitFlow extends Component {
 
         const {project} = this.props;
         const {branches} = project;
-        const masterBranch = branches.find(b => b.name === 'master');
+        const masterBranch = branches.find(b => b.name === 'prod');
         const hotFixBranches = branches.filter(b => b.hotFixBranch);
-        const developBranch = branches.find(b => b.name === 'develop');
+        const developBranch = branches.find(b => b.name === 'master');
         const releaseBranches = branches.filter(b => b.releaseBranch);
         const featureBranches = branches.filter(b => b.featureBranch);
         const noOfBranches = branches.length;
@@ -368,9 +369,9 @@ class GitFlow extends Component {
         return (
             <GitFlowElm>
                 <GlobalActions>
-                    <Button onClick={this.props.onNewHotFix}>New Hot Fix</Button>
-                    <Button onClick={this.props.onNewRelease}>New Release</Button>
-                    <Button onClick={this.props.onNewFeature}>New Feature</Button>
+                    <Button onClick={this.props.onNewHotFix}>Hot Fix erstellen</Button>
+                    <Button onClick={this.props.onNewRelease}>Release erstellen</Button>
+                    <Button onClick={this.props.onNewFeature}>Feature erstellen</Button>
                 </GlobalActions>
                 <ProjectElm>
                     {this.renderBranchHeaders(param)}

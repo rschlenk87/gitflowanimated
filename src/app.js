@@ -3,8 +3,8 @@ import styled from "styled-components";
 import GitFlow from "./gitflow";
 import shortid from "shortid";
 
-const DEVELOP = 'develop';
-const MASTER = 'master';
+const DEVELOP = 'master';
+const MASTER = 'prod';
 
 const masterID = shortid.generate();
 const developID = shortid.generate();
@@ -82,7 +82,7 @@ class App extends Component {
             name: featureBranchName,
             featureBranch: true,
             canCommit: true,
-            color: '#64B5F6'
+            color: '#6f59ff'
         };
         let newCommit = {
             id: shortid.generate(),

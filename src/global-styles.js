@@ -95,8 +95,8 @@ export const ButtonIcon = styled.button`
   height: 24px;
   background: transparent;
   background: transparent;
-  border: 1px solid #2196F3;
-  color: #2196F3;
+  border: 1px solid #fff;
+  color: #fff;
   border-radius: 50%;
   cursor: pointer;
   transition: all .2s;
